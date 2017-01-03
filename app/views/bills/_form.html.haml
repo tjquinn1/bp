@@ -1,0 +1,47 @@
+= simple_form_for @bill,  html: { multipart: true } do |f|
+  - if @bill.errors.any?
+    #errors
+      %p
+        = @bill.errors.count
+        Prevented this essential from saving
+      %ul
+        - @bill.errors.full_message.each do |msg|
+          %li = msg
+  .panel-body
+    = f.input :bill_name,  placeholder: "Bill Name", label: false, input_html: { class: 'form-control form-inline'}
+
+    .row
+      .col-md-12
+        %h3 Commitees
+        #committees
+          = f.simple_fields_for :committees do |committee|
+            = render 'committee_fields', f: committee
+          .links
+          = link_to_add_association 'Add Committee', f, :committees, class: 'btn btn-secondary add-button'
+
+    = f.input :stage, collection: ["Pending", "Signed", "Vetoed"], input_html: { class: "form-control form-input" }
+    
+    .row
+      .col-md-12
+        %h3 Bullet Points
+        #bps
+          = f.simple_fields_for :bps do |bp|
+            = render 'bp_fields', f: bp
+          .links
+          = link_to_add_association 'Add Bp', f, :bps, class: 'btn btn-secondary add-button'
+
+    .row
+      .col-md-12
+        %h3 Sponsor
+        #sponsors
+          = f.simple_fields_for :sponsors do |sponsor|
+            = render 'sponsor_fields', f: bp
+          .links
+          = link_to_add_association 'Add Sponsor', f, :sponsors, class: 'btn btn-secondary add-button'
+  
+
+
+
+
+  = f.button :submit, class: 'btn btn-primary'
+
