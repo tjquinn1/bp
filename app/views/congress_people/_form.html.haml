@@ -1,0 +1,55 @@
+.simple_form
+	= simple_form_for @congress_person,  html: { multipart: true } do |f|
+		- if @congress_person.errors.any?
+			#errors
+				%p
+					= @congress_person.errors.count
+					Prevented this essential from saving
+				%ul
+					- @congress_person.errors.full_message.each do |msg|
+						%li = msg
+		.center
+			.row-fluid
+				.form
+					.col-md-12
+						= f.input :image,  placeholder: "Image", label: false, input_html: { class: 'form-control'}
+			.row-fluid
+				.form
+					.col-md-12
+						= f.input :position, collection: ["Senator", "Representive"], input_html: { class: "form-control form-input" }
+				.form
+					.col-md-12
+						= f.input :first_name,  placeholder: "First Name", label: false, input_html: { class: 'form-control form-inline'}
+				.form
+					.col-md-12
+						= f.input :last_name,  placeholder: "Last Name", label: false, input_html: { class: 'form-control form-inline'}
+			.row-fluid
+				.form
+					= f.input :state, collection: ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MS", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"], input_html: { class: "form-control form-input" }
+			.row-fluid
+				.form
+					= f.input :bio,  placeholder: "Bio", label: false, input_html: { class: 'form-control form-inline'}
+			.row-fluid
+				.form
+					= f.input :party, collection: ["Republican", "Democrat","Independant"], input_html: { class: "form-control form-input" }
+			.row-fluid
+				.col-md-4
+				%h5 DOB
+				= f.input :dob,  placeholder: "DOB", label: false, input_html: { class: 'form-control form-inline'}
+
+			.row-fluid
+				.form
+					.col-md-12
+						= f.input :district, collection: 1..53, input_html: { class: "form-control form-input" }
+				.form
+					.col-md-12
+						= f.input :birth_place,  placeholder: "Birth Place", label: false, input_html: { class: 'form-control form-inline'}
+				.form
+					.col-md-12
+						= f.input :current_city,  placeholder: "Current City", label: false, input_html: { class: 'form-control form-inline'}
+
+
+
+
+
+			= f.button :submit, class: 'btn btn-primary'

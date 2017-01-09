@@ -1,5 +1,5 @@
 class Bill < ActiveRecord::Base
-		
+		belongs_to :congress_person
 		has_many :bps, :dependent => :destroy
 		has_many :committees, :dependent => :destroy
 		has_many :sponsors, :dependent => :destroy

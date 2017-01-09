@@ -125,6 +125,7 @@
 		text-align:center;
 		display: inline-block;
 		padding-bottom:2%;
+		float: none;
 	}
 
 	#new-bill {
@@ -193,4 +194,29 @@
 .devise-header {
 	text-align: center;
 }
+#last_name {
+	float:right;
+	display:inline-block;
+	margin: 0 auto;
+	text-align: center;
+	vertical-align: middle;
+}
 
+#first_name {
+	float: none;
+	display: inline-block;
+	margin: 0 auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#position {
+	margin: 0 auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.name {
+	display: inline-block;
+	margin: 0 auto;
+}

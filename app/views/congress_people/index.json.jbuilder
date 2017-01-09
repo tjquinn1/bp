@@ -1,0 +1,1 @@
+json.array! @congress_people, partial: 'congress_people/congress_person', as: :congress_person

@@ -1,0 +1,1 @@
+json.partial! "congress_people/congress_person", congress_person: @congress_person
