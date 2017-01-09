@@ -26,7 +26,8 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
-
+gem 'devise'
+gem 'devise-bootstrap-views'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

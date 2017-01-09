@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require devise_bootstrap_views
  */
 
 	@import "bootstrap";
@@ -66,9 +67,6 @@
 		padding-bottom:2%;
 		display:inline-block;
 	}
-
-	h1.bill {
-	} 
 
 	#committees-form {
 		padding-bottom:2%;
@@ -188,5 +186,11 @@
 		color: black;
 	}
 
-
+	.col-centered{
+	    float: none;
+	    margin: 0 auto;
+}
+.devise-header {
+	text-align: center;
+}
 
