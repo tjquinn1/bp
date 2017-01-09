@@ -4,7 +4,7 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = Bill.all
+    @bill = Bill.all.order("created_at DESC")
   end
 
   # GET /bills/1
@@ -69,7 +69,7 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:bill_name, :stage, bps_attributes:[:id, :bp, :_destroy], committees_attributes:[:id, :committee, :_destory],
-        sponsors_attributes:[:id, :sponsor, :_destory])
+      params.require(:bill).permit(:bill_name, :stage, :prop_date, :summary, :bill_number, bps_attributes:[:id, :bp, :_destroy], committees_attributes:[:id, :committee, :_destory],
+        sponsors_attributes:[:id, :sponsor, :_destory], cosponsors_attributes:[:id, :cosponsor, :_destory])
     end
 end

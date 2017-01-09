@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103195209) do
+ActiveRecord::Schema.define(version: 20170106034912) do
 
   create_table "bills", force: :cascade do |t|
-    t.string   "bill_name",  limit: 255
-    t.string   "stage",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "bill_name",   limit: 255
+    t.string   "stage",       limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.date     "prop_date"
+    t.text     "summary",     limit: 65535
+    t.string   "bill_number", limit: 255
   end
 
   create_table "bps", force: :cascade do |t|
@@ -38,6 +40,15 @@ ActiveRecord::Schema.define(version: 20170103195209) do
   end
 
   add_index "committees", ["bill_id"], name: "index_committees_on_bill_id", using: :btree
+
+  create_table "cosponsors", force: :cascade do |t|
+    t.string   "cosponsor",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "bill_id",    limit: 4
+  end
+
+  add_index "cosponsors", ["bill_id"], name: "index_cosponsors_on_bill_id", using: :btree
 
   create_table "sponsors", force: :cascade do |t|
     t.string   "sponsor",    limit: 255

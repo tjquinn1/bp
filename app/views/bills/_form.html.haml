@@ -1,47 +1,71 @@
-= simple_form_for @bill,  html: { multipart: true } do |f|
-  - if @bill.errors.any?
-    #errors
-      %p
-        = @bill.errors.count
-        Prevented this essential from saving
-      %ul
-        - @bill.errors.full_message.each do |msg|
-          %li = msg
-  .panel-body
-    = f.input :bill_name,  placeholder: "Bill Name", label: false, input_html: { class: 'form-control form-inline'}
 
-    .row
-      .col-md-12
-        %h3 Commitees
-        #committees
-          = f.simple_fields_for :committees do |committee|
-            = render 'committee_fields', f: committee
-          .links
-          = link_to_add_association 'Add Committee', f, :committees, class: 'btn btn-secondary add-button'
+.simple_form
+	= simple_form_for @bill,  html: { multipart: true } do |f|
+		- if @bill.errors.any?
+			#errors
+				%p
+					= @bill.errors.count
+					Prevented this essential from saving
+				%ul
+					- @bill.errors.full_message.each do |msg|
+						%li = msg
+		.center
+			.row-fluid
+				.form
+					= f.input :bill_number,  placeholder: "Bill Number", label: false, input_html: { class: 'form-control form-inline'}
+			.row-fluid
+				.form
+					= f.input :bill_name,  placeholder: "Bill Name", label: false, input_html: { class: 'form-control form-inline'}
+			.row-fluid
+				.form
+					= f.input :summary,  placeholder: "Summary", label: false, input_html: { class: 'form-control form-inline'}
+			
+			.row-fluid
+				.col-md-4
+				= f.input :prop_date,  placeholder: "Proposed Date", label: false, input_html: { class: 'form-control form-inline'}
+			.row-fluid
+				.col-md-12
+					.input-group
+						%h3 Commitees
+						#committees-form
+							= f.simple_fields_for :committees do |committee|
+								= render 'committee_fields', f: committee
+							.links
+							= link_to_add_association 'Add Committee', f, :committees, class: 'btn btn-secondary add-button'
+			
+			.row-fluid
+				.col-md-12
+					= f.input :stage, collection: ["Pending", "Signed", "Vetoed"], input_html: { class: "form-control form-input" }
+			
+			.row-fluid
+				.col-md-12
+					%h3 Bullet Points
+					#bps-form
+						= f.simple_fields_for :bps do |bp|
+							= render 'bp_fields', f: bp
+						.links
+						= link_to_add_association 'Add Bp', f, :bps, class: 'btn btn-secondary add-button'
 
-    = f.input :stage, collection: ["Pending", "Signed", "Vetoed"], input_html: { class: "form-control form-input" }
-    
-    .row
-      .col-md-12
-        %h3 Bullet Points
-        #bps
-          = f.simple_fields_for :bps do |bp|
-            = render 'bp_fields', f: bp
-          .links
-          = link_to_add_association 'Add Bp', f, :bps, class: 'btn btn-secondary add-button'
+			.row-fluid
+				.col-md-12
+					%h3 Sponsor
+					#sponsors-form
+						= f.simple_fields_for :sponsors do |sponsor|
+							= render 'sponsor_fields', f: sponsor
+						.links
+						= link_to_add_association 'Add Sponsor', f, :sponsors, class: 'btn btn-secondary add-button'
 
-    .row
-      .col-md-12
-        %h3 Sponsor
-        #sponsors
-          = f.simple_fields_for :sponsors do |sponsor|
-            = render 'sponsor_fields', f: bp
-          .links
-          = link_to_add_association 'Add Sponsor', f, :sponsors, class: 'btn btn-secondary add-button'
-  
+			.row-fluid
+				.col-md-12
+					%h3 Cosponsor
+					#cosponsors-form
+						= f.simple_fields_for :cosponsors do |cosponsor|
+							= render 'cosponsor_fields', f: cosponsor
+						.links
+						= link_to_add_association 'Add Coponsor', f, :cosponsors, class: 'btn btn-secondary add-button'
 
 
 
 
-  = f.button :submit, class: 'btn btn-primary'
+			= f.button :submit, class: 'btn btn-primary'
 

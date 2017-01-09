@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
   resources :bills
-root to: "home#index"
+  get '/home', to: 'home#index'
+  
+  root to: "home#index"
+
+  get '/about', to: 'about#index'
 end

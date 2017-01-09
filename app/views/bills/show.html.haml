@@ -1,0 +1,60 @@
+.row
+	= link_to "Edit", edit_bill_path, class: "btn btn-secondary"
+
+.row
+	.name
+		%h1.bill= @bill.bill_number + " - " + @bill.bill_name
+	%p.date= "Date Instroduced: " + @bill.prop_date.strftime("%D")
+
+
+.white
+	.row{:id => "Sponsor-Block"}
+		.col-md-8
+			.row
+				#sponsors
+					%h6 
+						%strong
+							Sponsor(s):
+						- @bill.sponsors.each do |sponsor|
+							%ul
+								%li= sponsor.sponsor
+				#committee
+					%h6 
+						%strong
+							Committee(s):
+						- @bill.committees.each do |committee|
+							%ul
+								%li= committee.committee
+
+			.row
+				#bp
+				%h6
+
+					%strong
+						Bullet Points:
+				.bp
+					- @bill.bps.each do |bp|
+						%ul
+							%li= bp.bp
+
+
+
+		.col-md-4
+		#cosponsors
+			%h6 
+				%strong
+					Cosponsor(s):
+			%table.table.table-hover
+				= render(@bill.cosponsors) || render('empty_table_partial')
+
+
+
+	.row
+		.col-md-12
+			#summary
+			%h4 
+				%strong
+					Summary
+			%p= @bill.summary
+
+

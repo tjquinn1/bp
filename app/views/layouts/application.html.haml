@@ -1,39 +1,59 @@
 !!! 5
 %html
 %head
-	%title Gidget|Explore Sound
+	%title Bullet Point Bills
 	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
+	%link{:href => "https://fonts.googleapis.com/cssfamily=Cinzel:400,700,900|Playfair+Display+SC:400,700,900", :rel => "stylesheet"}/
 	= csrf_meta_tags
 %body
-	%nav.navbar.navbar-light.bg-faded
-		.row
-			%li= link_to "GIDGET", root_path, class: "navbar-brand"
-			
+	%a{:name => "top"}
+	%nav.navbar.navbar-toggleable-sm.navbar-light.bg-faded{:style => "background-color: white"}
+		%a.navbar-brand{:href => "#"}
+			%img.d-inline-block.align-top{:alt => "", :height => "30", :src => "#{asset_path( 'logo_placeholder.png' )}", :width => "100"}/
+			Bootstrap
+		%ul.nav.nav-tabs
+			%li.nav-item
+				%a.nav-link{:href => "#"} 
+			%li.nav-item
+				%a.nav-link{:href => "/bills/new"} New Bill
+			#bn
+				%li.nav-item
+					%a.nav-link{:href => "/bills"} Bills
+			%li.nav-item
+				%a.nav-link{:href => "/about"} About Us
 
-			%ul.nav.navbar-nav
-				%li.nav-item
-					%a.nav-link{:href => "/bills/new"} New Essential
-				%li.nav-item.dropdown
-					%a#supportedContentDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Dropdown
-					.dropdown-menu{"aria-labelledby" => "supportedContentDropdown"}
-						%a.dropdown-item{:href => "#"} Action
-						%a.dropdown-item{:href => "#"} Another action
-						%a.dropdown-item{:href => "#"} Something else he
-			%ul.nav.navbar-nav
-				%li.nav-item
-					%a.nav-link{:href => "/users/sign_up"}Sign Up
-				%li.nav-item
-					%a.nav-link{:href => "/users/sign_in"} Sign In
-	%form.form-inline.float-xs-right
-		%input.form-control{:placeholder => "Search", :type => "text"}/
-		%button.btn.btn-outline-success{:type => "submit"} Search
 
 	.container
 		- flash.each do |name, msg|
 			= content_tag :div, msg, class: "alert"
 
 		= yield
+
+
+
+
+	.container
+		%footer
+			.footer
+				%ul
+					%li
+						.copy 
+							&copy; 2016 basketCaseSoftWerks
+					%li
+						%a{:href => "mailto:someone@example.com"}
+							About Us
+					%li
+						%a{:href => "mailto:someone@example.com"}
+							Contact Us
+					%li
+						%a{:href => "mailto:someone@example.com"}
+							Terms
+					%li
+						%a{:href => "#top"} Back to top
+
+
+
 
 
 

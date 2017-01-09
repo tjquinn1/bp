@@ -1,0 +1,11 @@
+
+- @bill.each_slice(3) do |bills|
+  .row
+    - bills.each do |bill|
+      .col-md-4
+        .bill
+          %h2= link_to bill.bill_name, bill
+          %h5= bill.stage
+          %h5= bill.prop_date.strftime("%D")
+
+
